@@ -29,7 +29,7 @@ $code = generateVerificationCode(6);
 // Send the email using the MailerSend API. https://developers.mailersend.com/
 
 try {
-    $mailersend = new MailerSend(['api_key' => $_ENV['MAILER_API_KEY']]);
+    $mailersend = new MailerSend(['api_key' => 'key']);
 
     $recipients = [
         new Recipient($email, 'Customer'),
