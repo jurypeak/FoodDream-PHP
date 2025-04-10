@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = mysqli_fetch_assoc($result);
 
             $values["status"] = "Success";
+            $values["id"] = $row['AccountID'];
             $values["email"] = $row['Email'];
             $values["CustomerFName"] = $row['CustomerFName'];
             $values["CustomerLName"] = $row['CustomerLName'];
