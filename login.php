@@ -28,12 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
-            $values["status"] = "Success";
-            $values["id"] = $row['AccountID'];
-            $values["email"] = $row['Email'];
-            $values["CustomerFName"] = $row['CustomerFName'];
-            $values["CustomerLName"] = $row['CustomerLName'];
-            $values["password"] = $row['Password'];
+        $values["status"] = "Success";
+        $values["email"] = $row['Email'];
+        $values["id"] = $row['AccountID'];
+        $values["CustomerFName"] = $row['CustomerFName'];
+        $values["CustomerLName"] = $row['CustomerLName'];
+        $values["accessLevel"] = $row['AccessLevel'];
+        $values["password"] = $row['Password'];
 
     } else {
         $values["status"] = "Failed";

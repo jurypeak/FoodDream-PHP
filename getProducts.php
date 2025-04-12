@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 SELECT 
     p.ProductID, p.ProductName, p.ProductPrice, 
     p.ProductCO, p.ProductStock, p.Description, 
-    p.Category, p.ImageURL, p.Views, p.Sales,
+    p.Category, p.ImageURL,
     i.IngredientID, i.IngredientName, i.Weight, i.Allergens
 FROM Product p
 LEFT JOIN Ingredient i ON p.ProductID = i.ProductID
@@ -31,8 +31,6 @@ ORDER BY p.ProductID;
                     "description" => $row['Description'],
                     "category" => $row['Category'],
                     "image" => $row['ImageURL'],
-                    "views" => $row['Views'],
-                    "sales" => $row['Sales'],
                     "ingredients" => []
                 ];
             }

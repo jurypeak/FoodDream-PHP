@@ -1,10 +1,11 @@
 <?php
 
 require 'vendor/autoload.php';
+
+use MailerSend\Exceptions\MailerSendException;
+use MailerSend\Helpers\Builder\EmailParams;
 use MailerSend\Helpers\Builder\Personalization;
 use MailerSend\Helpers\Builder\Recipient;
-use MailerSend\Helpers\Builder\EmailParams;
-use MailerSend\Exceptions\MailerSendException;
 use MailerSend\MailerSend;
 
 // Function to generate a random verification code
