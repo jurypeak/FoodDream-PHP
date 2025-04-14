@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $data['email'];
     $password = $data['password'];
 
+    // Check if email or password is empty
     if (empty($email) || empty($password)) {
         $values["status"] = "Failed";
         $values["message"] = "Email and password are required.";

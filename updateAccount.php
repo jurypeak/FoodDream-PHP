@@ -1,16 +1,20 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Include your database connection
     include 'conn.php';
 
+    // Extract the incoming request data (JSON)
     $jsondata = file_get_contents("php://input");
     $data = json_decode($jsondata, true);
 
+    // Validate required fields
     $accountID = $data['accountId'];
     $email = $data['email'];
     $fName = $data['fName'];
     $lName = $data['lName'];
     $password = $data['password'];
 
+    // Check if any required fields are empty
     if (empty($accountID) || empty($email) || empty($fName) || empty($password)) {
         echo json_encode([
             "status" => "Failed",

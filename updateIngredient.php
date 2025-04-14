@@ -14,11 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Assign variables
-    $ingredientId = $data['ingredientId']; // The unique ID of the ingredient to be updated
-    $productId = $data['productId']; // The product this ingredient belongs to
-    $name = $data['name']; // Name of the ingredient
-    $weight = $data['weight']; // Weight of the ingredient
-    $allergens = $data['allergens']; // Allergens related to the ingredient
+    $ingredientId = $data['ingredientId'];
+    $productId = $data['productId'];
+    $name = $data['name'];
+    $weight = $data['weight'];
+    $allergens = $data['allergens'];
 
     // Check if the ingredient exists for the given productId
     $sql_check = "SELECT IngredientID FROM Ingredient WHERE ProductID = ? AND IngredientID = ?";
@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_execute($stmt_check);
     $result_check = mysqli_stmt_get_result($stmt_check);
 
+    // Check if the ingredient exists
     if (mysqli_num_rows($result_check) == 0) {
         echo json_encode(["status" => "Failed", "message" => "Ingredient not found for the given product."]);
         exit;

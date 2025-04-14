@@ -1,7 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    // Include database connection
     include 'conn.php';
 
+    // Check if the connection was successful
     $sql = "
 SELECT 
     p.ProductID, p.ProductName, p.ProductPrice, 
@@ -13,8 +15,10 @@ LEFT JOIN Ingredient i ON p.ProductID = i.ProductID
 ORDER BY p.ProductID;
  ";
 
+    // Execute the query
     $result = mysqli_query($conn, $sql);
 
+    // Check if the query was successful
     if ($result) {
         $products = [];
 
@@ -45,6 +49,7 @@ ORDER BY p.ProductID;
             }
         }
 
+        // Return the products as a JSON response
         echo json_encode(array_values($products), JSON_PRETTY_PRINT);
 
     } else {

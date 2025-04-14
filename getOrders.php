@@ -1,7 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    // Include your database connection file
     include 'conn.php';
 
+    // Get raw JSON input
     $sql = "
     SELECT 
         o.OrdersID,
@@ -36,11 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     ORDER BY o.OrdersID;
     ";
 
+    // Execute the query
     $result = mysqli_query($conn, $sql);
 
+    // Check if the query was successful
     if ($result) {
         $orders = [];
 
+        // Fetch the results and organize them into an associative array
         while ($row = mysqli_fetch_assoc($result)) {
             $orderId = $row['OrdersID'];
 
@@ -87,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             }
         }
 
+        // Return the orders as a JSON response
         echo json_encode(array_values($orders), JSON_PRETTY_PRINT);
     } else {
         echo json_encode([
